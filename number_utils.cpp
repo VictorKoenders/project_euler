@@ -72,3 +72,17 @@ std::vector<uint64_t> get_primes_below(uint64_t target) {
     }
     return result;
 }
+
+std::vector<uint64_t> get_divisable_numbers(uint64_t number)
+{
+    std::vector<uint64_t> result;
+    uint64_t number_sqrt = sqrt(number);
+    for(uint64_t i = 1; i <= number_sqrt; i++){
+        if((number % i) == 0) {
+            result.push_back(i);
+            result.push_back(number / i);
+        }
+    }
+    
+    return result;
+}

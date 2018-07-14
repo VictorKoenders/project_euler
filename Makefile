@@ -1,7 +1,7 @@
-last: problem_10.exe
+last: problem_13.exe
 
-run: problem_10.exe
-	./$^
+run: problem_13.exe number_utils.o
+	$<
 
 %.exe: %.cpp number_utils.o
 	g++ $^ -o $@
