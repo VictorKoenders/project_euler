@@ -37,7 +37,25 @@ size_t number_length(uint64_t number){
     }
     return size;
 }
+
+uint64_t factorial(uint64_t number) {
+    uint64_t sum = 1;
+    while(number > 1){
+        sum *= number;
+        number--;
+    }
+    return sum;
+}
  
+uint64_t factorial_sum(uint64_t number) {
+    uint64_t sum = 0;
+    while(number >= 1){
+        sum += number;
+        number--;
+    }
+    return sum;
+}
+
 /*
 // Old version, runs in 0(n^n)
 
