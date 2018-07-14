@@ -1,5 +1,7 @@
-#include "number_utils.h"
+#include "string_utils.h"
 #include "time_utils.h"
+#include <iostream>
+#include <vector>
 #include <fstream>
 #include <algorithm>
 
@@ -18,37 +20,12 @@ std::vector<std::string> get_input() {
     }
     return result;
 }
-
-std::string sum_line(std::string first, std::string second){
-    std::string result;
-    result.reserve(std::max(first.size(), second.size()));
-    int carry = 0;
-    for(size_t i = 0; i < first.size() || i < second.size(); i++) {
-        char left = first.size() > i ? first[first.size() - i - 1] : '0';
-        char right = second.size() > i ? second[second.size() - i - 1] : '0';
-
-        char result_char = carry + left + right - '0';
-        carry = 0;
-        while(result_char > '9') {
-            carry++;
-            result_char -= 10;
-        }
-        result.insert(0, 1, result_char);
-    }
-    while(carry > 0) {
-        auto num = carry % 10;
-        carry /= 10;
-        result.insert(0, 1, '0' + num);
-    }
-    return result;
-}
-
 int main(){
     measure_time([]{
     auto lines = get_input();
     std::string result = "0";
     for(std::string line : lines) {
-        auto new_result = sum_line(result, line);
+        auto new_result = sum_string(result, line);
         result = new_result;
     }
     std::cout << result << std::endl;;
