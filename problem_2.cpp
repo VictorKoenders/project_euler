@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cstdint>
+#include "time_utils.h"
 
 int main(){
+    measure_time([] {
     uint64_t current = 1, previous = 1;
     uint64_t sum = 0;
     while(true) {
@@ -18,5 +20,6 @@ int main(){
     }
 
     std::cout << sum << std::endl;
+    });
     return 0;
 }

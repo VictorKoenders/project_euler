@@ -1,9 +1,9 @@
 #include "number_utils.h"
-#include <ctime>
+#include "time_utils.h"
 
 int main()
 {
-    clock_t begin = clock();
+    measure_time([]{
     uint64_t sum = 0;
     for (uint64_t i = 1;; i++)
     {
@@ -15,7 +15,5 @@ int main()
             break;
         }
     }
-    clock_t end = clock();
-    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-    std::cout << "Calculated in " << elapsed_secs << " seconds" << std::endl;
+    });
 }

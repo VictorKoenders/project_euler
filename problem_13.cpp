@@ -1,4 +1,5 @@
 #include "number_utils.h"
+#include "time_utils.h"
 #include <fstream>
 #include <algorithm>
 
@@ -43,6 +44,7 @@ std::string sum_line(std::string first, std::string second){
 }
 
 int main(){
+    measure_time([]{
     auto lines = get_input();
     std::string result = "0";
     for(std::string line : lines) {
@@ -51,4 +53,5 @@ int main(){
     }
     std::cout << result << std::endl;;
     std::cout << result.substr(0, 10) << std::endl;;
+    });
 }

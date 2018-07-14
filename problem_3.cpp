@@ -1,9 +1,8 @@
-#include <iostream>
-#include <cstdint>
-
 #include "number_utils.h"
+#include "time_utils.h"
 
 int main(){
+    measure_time([] {
     uint64_t number = 600851475143;
     // uint64_t number = 13195;
 
@@ -26,12 +25,13 @@ int main(){
             divider ++;
             if(divider > number / 2) {
                 std::cout << "Divider is larger than half of the number, this should not happen" << std::endl;
-                return 1;
+                return;
             }
             if(is_prime(divider)){
                 break;
             }
         }
     }
+    });
     return 0;
 }

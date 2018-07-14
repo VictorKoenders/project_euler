@@ -1,4 +1,5 @@
 #include "number_utils.h"
+#include "time_utils.h"
 #include <fstream>
 #include <array>
 #include <cassert>
@@ -68,6 +69,7 @@ grid_t get_grid() {
 }
 int main()
 {
+    measure_time([]{
     grid_t grid = get_grid();
     uint64_t highest_product = 0;
     for (uint8_t y = 0; y < GRID_HEIGHT; y++)
@@ -125,4 +127,5 @@ int main()
         }
     }
     std::cout << highest_product << std::endl;
+});
 }

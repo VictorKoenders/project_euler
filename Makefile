@@ -1,9 +1,9 @@
-last: problem_13.exe
+last: problem_14.exe
 
-run: problem_13.exe number_utils.o
+run: problem_14.exe
 	$<
 
-%.exe: %.cpp number_utils.o
+%.exe: %.cpp number_utils.o time_utils.o
 	g++ $^ -o $@
 
 %.o: %.cpp
