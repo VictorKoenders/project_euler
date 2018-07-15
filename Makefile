@@ -1,9 +1,9 @@
 HEADERS = $(wildcard *.h)
 HEADERS_O = ${HEADERS:.h=.o}
 
-last: problem_23.exe
+last: problem_25.exe
 
-run: problem_23.exe ${HEADERS_O}
+run: problem_25.exe ${HEADERS_O}
 	$<
 
 %.exe: %.cpp ${HEADERS_O}
