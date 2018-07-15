@@ -98,7 +98,9 @@ std::vector<uint64_t> get_divisable_numbers(uint64_t number)
     for(uint64_t i = 1; i <= number_sqrt; i++){
         if((number % i) == 0) {
             result.push_back(i);
-            result.push_back(number / i);
+            if(number / i != i) {
+                result.push_back(number / i);
+            }
         }
     }
     
