@@ -4,3 +4,4 @@
 std::string sum_string(const std::string first, const std::string second);
 std::string multiply_string(const std::string first, uint64_t second);
 std::vector<std::string> split(const std::string input, char delim);
+bool calculate_next_lexicographic_permutation(std::string& input);

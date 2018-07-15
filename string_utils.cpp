@@ -82,3 +82,34 @@ std::vector<std::string> split(const std::string input, char delim)
     }
     return result;
 }
+
+bool calculate_next_lexicographic_permutation(std::string& input) {
+    int64_t first_character = input.size() - 1;
+    int64_t i;
+    for(i = input.size() - 2; i >= 0; i--){
+        if(input[i] < input[i + 1]) {
+            first_character = i;
+            break;
+        }
+    }
+    if(i == -1) {
+        return false;
+    }
+    uint64_t next_character = first_character + 1;
+    char next_character_value = input[first_character + 1];
+    for(uint64_t i = first_character + 2; i < input.size(); i++){
+        if(input[i] < next_character_value && input[i] > input[first_character]) {
+            next_character_value = input[i];
+            next_character = i;
+        }
+    }
+    if(next_character_value == input[first_character]) {
+        return false;
+    }
+
+    char tmp = input[first_character];
+    input[first_character] = input[next_character];
+    input[next_character] = tmp;
+    std::sort(input.begin() + first_character + 1, input.end());
+    return true;
+}
