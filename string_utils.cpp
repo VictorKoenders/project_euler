@@ -1,5 +1,6 @@
 #include "string_utils.h"
 #include <algorithm>
+#include <iostream>
 
 std::string sum_string(const std::string first, const std::string second)
 {
@@ -26,6 +27,40 @@ std::string sum_string(const std::string first, const std::string second)
         carry /= 10;
         result.insert(0, 1, '0' + num);
     }
+    return result;
+}
+std::string multiply_string(const std::string first, uint64_t second) {
+    std::string result;
+    result.reserve(first.size());
+    for(int32_t i = first.size() - 1; i >= 0; --i){
+        uint64_t number = first[i] - '0';
+        number *= second;
+
+        size_t result_position = first.size() - i - 1;
+        int carry = 0;
+        while(number > 0 || carry > 0) {
+            while(result.size() <= result_position) {
+                result.push_back('0');
+            }
+            uint64_t n;
+            if(number > 0) {
+                n = number % 10;
+                number = (number - n) / 10;
+            } else {
+                n = 0;
+            }
+            char c = n + result[result_position] + carry;
+            carry = 0;
+            while(c > '9') {
+                c -= 10;
+                carry++;
+            }
+            result[result_position] = c;
+            result_position ++;
+        }
+    }
+    std::reverse(result.begin(), result.end());
+
     return result;
 }
 
